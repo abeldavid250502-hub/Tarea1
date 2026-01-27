@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicio PHP - Nombre</title>
+</head>
+<body>
+
+
+<h1>Servicio PHP</h1>
+<p>Presiona el botón para obtener el nombre desde el servidor:</p>
+
+
+<button onclick="ejecuta()">Obtener nombre</button>
+
+
+<script>
+async function ejecuta() {
+try {
+const resp = await fetch("servicio.php");
+
+
+if (resp.ok) {
+const texto = await resp.text();
+alert("Nombre del estudiante: " + texto);
+} else {
+throw new Error(resp.statusText);
+}
+
+
+} catch (error) {
+console.error(error);
+alert("Error: " + error.message);
+}
+}
+</script>
+
+
+</body>
+</html>
